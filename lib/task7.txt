@@ -1,0 +1,13 @@
+class Moped
+krutoiMoped
+5
+Name: 0
+257516,38
+Name: 1
+609588,31
+Name: 2
+826040,89
+Name: 3
+803416,53
+Name: 4
+799412,74
