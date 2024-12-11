@@ -10,27 +10,29 @@ public class Server {
         Socket clientSocket = null;
         ObjectInputStream in = null;
         PrintWriter out = null;
-        try{
-            serverSocket = new ServerSocket(4000);
-            clientSocket = serverSocket.accept();
-            in = new ObjectInputStream(clientSocket.getInputStream());
-            out = new PrintWriter(clientSocket.getOutputStream(), true);
-
-            Matrix m = (Matrix)in.readObject();
-
-            out.println(MatrixOddSum.getOddSum(m));
-        }
-        catch(IOException e){
-            System.err.println(e.toString());
-        }
-        catch(ClassNotFoundException e){
-            System.err.println(e);
-        }
-        finally{
-            serverSocket.close();
-            clientSocket.close();
-            in.close();
-            out.close();
+        while (true) {
+            try{
+                serverSocket = new ServerSocket(4000);
+                clientSocket = serverSocket.accept();
+                in = new ObjectInputStream(clientSocket.getInputStream());
+                out = new PrintWriter(clientSocket.getOutputStream(), true);
+    
+                Matrix m = (Matrix)in.readObject();
+    
+                out.println(Matrix.getOddSum(m));
+            }
+            catch(IOException e){
+                System.err.println(e.toString());
+            }
+            catch(ClassNotFoundException e){
+                System.err.println(e);
+            }
+            finally{
+                serverSocket.close();
+                clientSocket.close();
+                in.close();
+                out.close();
+            }
         }
     }
 }
