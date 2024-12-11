@@ -21,11 +21,8 @@ public class Server {
     
                 out.println(Matrix.getOddSum(m));
             }
-            catch(IOException e){
+            catch(IOException | ClassNotFoundException e){
                 System.err.println(e.toString());
-            }
-            catch(ClassNotFoundException e){
-                System.err.println(e);
             }
             finally{
                 serverSocket.close();
